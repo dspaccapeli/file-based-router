@@ -1,0 +1,20 @@
+{
+    "name": "dspaccapeli/file-based-router",
+    "description": "Simple file-based router to easily serve your public endpoints from a directory.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "FileBasedRouter\\": "src/"
+        },
+        "files": [
+            "src/router.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Daniele Spaccapeli",
+            "email": "dspaccapeli@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
