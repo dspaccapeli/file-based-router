@@ -7,6 +7,11 @@
 # File-based Router
  Simple file-based router to automatically route requests to files in a directory
 
+- [Introduction](#introduction)
+- [Get started](#get-started)
+- [Usage](#usage)
+- [Router code](#router-code)
+
 ## Introduction
 
 This **File-based router** is a simple routing system written in PHP that allows developers to easily handle URL routing in their PHP projects. It uses file-based routing rules to map URLs to specific controllers or functions, making it easy to add new routes and modify existing ones. 
@@ -64,6 +69,15 @@ route($path, $endpoints_abs_path, function($path){
 
 FileBasedRouter::route($path, __DIR__ . "/../hello/");
 ```
+### Note on `import` scoping
+
+If you want to access objects imported with `require` or `import` (I will use the terms interchangeably) in the entrypoint/index file from the controller files, you need to be careful about their *scope*.
+
+Variables *required* in the entrypoint/index file are not available in the controller files. `route` is *just* a function that is called in the entrypoint/index file, normal scoping rules apply. Thus variables need to be re-*required* in the controller files as well. This is not true for functions, which will be available in the controller files. 
+
+**I recommend to define the relevant imports and required objects in each controller file each time to be more explicit.** It is better for maintainability, makes it clear what is available to the developers and helps some linting systems. In that case you can use the the `require_once` or `import_once` without worrying about the scope of the variables. 
+
+Note that this is only one way of doing it. There are multiple ways of solving the imports scoping, this is just one of them.
 
 ## Usage
 
@@ -103,7 +117,7 @@ It is the extension of the controller files. It defaults to `.php` if not specif
 If the routing is successful, the router will include the file corresponding to the requested URL and exit the script and return `true`.
 If the routing fails, the router will return `false` and the script will continue to run.
 
-## Code
+## Router code
 
 The router is a single function of around 20 lines of code. It is very easy to understand and modify.
 
