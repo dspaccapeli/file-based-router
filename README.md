@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/dspaccapeli/file-based-router/main/media/example.png" width="600" alt="File-based Router">
+    <img src="https://github.com/dspaccapeli/file-based-router/blob/master/media/example.png?raw=true" width="600" alt="File-based Router">
 </p>
 
 ------
